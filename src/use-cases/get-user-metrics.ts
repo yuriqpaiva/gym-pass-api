@@ -2,7 +2,6 @@ import { type CheckInsRepository } from '@/repositories/check-ins-repository'
 
 interface GetUserMetricsRequest {
   userId: string
-  page: number
 }
 
 interface GetUserMetricsResponse {
