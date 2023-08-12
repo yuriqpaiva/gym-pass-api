@@ -1,35 +1,40 @@
 name: Run E2E Tests
 
-on: [pull_request]
+on:
+  pull_request:
 
-jobs: 
+jobs:
   run-e2e-test:
     name: Run E2E Tests
-      runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-      services:
-        postgres:
-          image: postgres 
-          container_name: api-solid-pg
-          restart: always
-          env:
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: docker
-            POSTGRES_DB: api_solid
-          ports:
-            - 5432:5432
+    services:
+      postgres:
+        image: postgres
+        container_name: api-solid-pg
+        restart: always
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: docker
+          POSTGRES_DB: api_solid
+        ports:
+          - 5432:5432
 
-      steps:
-        - uses: actions/checkout@v3
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-        - uses: actions/setup-node@v3
-          with:
-            node-version: 18
-            cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+          cache: 'npm'
 
-        - run: npm ci
+      - name: Install Dependencies
+        run: npm ci
         
-        - run: npm run test:e2e
-          env:
-            JWT_SECRET: testing-secret
-            DATABASE_URL: "postgresql://postgres:docker@localhost:5432/api_solid?schema=public"
+      - name: Run E2E Tests
+        run: npm run test:e2e
+        env:
+          JWT_SECRET: testing-secret
+          DATABASE_URL: "postgresql://postgres:docker@localhost:5432/api_solid?schema=public"
