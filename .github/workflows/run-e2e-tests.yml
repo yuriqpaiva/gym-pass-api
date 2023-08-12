@@ -11,8 +11,6 @@ jobs:
     services:
       postgres:
         image: postgres
-        container_name: api-solid-pg
-        restart: always
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: docker
