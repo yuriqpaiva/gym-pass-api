@@ -32,6 +32,15 @@ Run application
 npm run start:dev
 ```
 
+## 📦 For production
+```bash
+npm run build
+```
+Start application
+```
+npm run start
+```
+
 ## 🧪 Testing
 Run tests using [Vitest](https://vitest.dev/)
 
