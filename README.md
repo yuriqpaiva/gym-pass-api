@@ -1,32 +1,49 @@
-# App
+# 🏋️ Gympass API
+![NodeJS](https://img.shields.io/badge/-NodeJS-339933?style=flat-square&logo=node.js&logoColor=white)
+![Typescript](https://img.shields.io/badge/-Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Fastify](https://img.shields.io/badge/-Fastify-202020?style=flat-square&logo=fastify&logoColor=white)
+![Prisma](https://img.shields.io/badge/-Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white)
+![Vitest](https://img.shields.io/badge/-Vitest-000000?style=flat-square&logo=vitest&logoColor=white)
 
-GymPass style app.
+An API project based on Gympass style app.
+1. Search for near gyms
+2. Search for gyms by name
+3. Check-in at a gym
+4. Validate check-ins
+5. Register a gym
+6. View user profile
+7. Authentication with access token and refresh token (JWT)
 
-## Functional Requirements
+## 🔧 Getting started
+Create a `.env` file with the variables as in `.env.example`
 
-- [x] Users must be able to register;
-- [x] Users must be able to authenticate;
-- [x] Users must be able to retrieve the profile of a logged-in user;
-- [x] Users must be able to obtain the number of check-ins performed by the logged-in user;
-- [x] Users must be able to access their check-in history;
-- [x] Users must be able to search for nearby gyms (up to 10 km);
-- [x] Users must be able to search for gyms by name;
-- [x] Users must be able to check in at a gym;
-- [x] Users must be able to validate their check-ins;
-- [x] Users must be able to register a gym.
+Install dependencies
+```bash
+npm install
+```
 
-## Business Rules
+Run migrations
+```bash
+npx prisma migrate dev
+```
 
-- [x] Users cannot register with a duplicate email;
-- [x] Users cannot perform 2 check-ins on the same day;
-- [x] Users cannot check in if they are not close (within 100m) to the gym;
-- [x] Check-ins can only be validated within 20 minutes of creation;
-- [x] Check-ins can only be validated by administrators;
-- [x] Gyms can only be registered by administrators.
+Run application
+```bash
+npm run start:dev
+```
 
-## Non-Functional Requirements
+## 🧪 Testing
+Run tests using [Vitest](https://vitest.dev/)
 
-- [x] User passwords must be encrypted;
-- [x] Application data must be persisted in a PostgreSQL database;
-- [x] All data lists must be paginated with 20 items per page;
-- [x] Users must be identified with a JSON Web Token (JWT).
+Unity tests
+```bash
+npm run test
+```
+
+E2E tests
+```bash
+npm run test:e2e
+```
+
+---
+Made with ❤️ by [Yuri Paiva](https://yuripaiva.dev) 
